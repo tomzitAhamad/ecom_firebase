@@ -1,4 +1,5 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:ecom_firebase/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_button.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_footer.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_textfield.dart';
@@ -98,7 +99,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     SizedBox(height: 30.h),
 
-                    AuthFooter(onTap: () {}),
+                    AuthFooter(
+                      questionText: "Don't have an account? ",
+                      actionText: "Sign Up",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const SignupScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
