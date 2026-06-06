@@ -1,8 +1,11 @@
+import 'package:ecom_firebase/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignInHeader extends StatelessWidget {
-  const SignInHeader({super.key});
+class AuthHeader extends StatelessWidget {
+  final String title;
+
+  const AuthHeader({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class SignInHeader extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "Sign In",
+            title,
             style: TextStyle(
               color: Colors.white,
               fontSize: 32.sp,

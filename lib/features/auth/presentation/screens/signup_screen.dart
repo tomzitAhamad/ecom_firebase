@@ -1,8 +1,9 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:ecom_firebase/features/auth/presentation/screens/user_info_screen.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_button.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_footer.dart';
+import 'package:ecom_firebase/features/auth/presentation/widgets/auth_header.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_textfield.dart';
-import 'package:ecom_firebase/features/auth/presentation/widgets/sign_in_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,7 @@ class _SignupScreenState extends State<SignupScreen> {
       backgroundColor: AppColors.deepOrange,
       body: Column(
         children: [
-          const SignInHeader(),
+          const AuthHeader(title: "Sign Up"),
 
           Expanded(
             child: Container(
@@ -113,7 +114,17 @@ class _SignupScreenState extends State<SignupScreen> {
 
                     SizedBox(height: 50.h),
 
-                    AuthButton(title: "SIGN UP", onTap: () {}),
+                    AuthButton(
+                      title: "SIGN UP",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const UserInfoScreen(),
+                          ),
+                        );
+                      },
+                    ),
 
                     SizedBox(height: 30.h),
 
