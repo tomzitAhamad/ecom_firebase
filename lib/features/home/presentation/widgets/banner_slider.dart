@@ -1,54 +1,68 @@
-import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecom_firebase/features/home/data/dummy/dummy_banners.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BannerSlider extends StatelessWidget {
+class BannerSlider extends StatefulWidget {
   const BannerSlider({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 160.h,
-      decoration: BoxDecoration(
-        color: AppColors.deepOrange,
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            left: 20.w,
-            top: 30.h,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Feel Festive",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  "Top selling collection",
-                  style: TextStyle(color: Colors.white70, fontSize: 14.sp),
-                ),
-              ],
-            ),
-          ),
+  State<BannerSlider> createState() => _BannerSliderState();
+}
 
-          Positioned(
-            right: 20.w,
-            bottom: 10.h,
-            child: Icon(
-              Icons.shopping_bag,
-              size: 90.sp,
-              color: Colors.white.withOpacity(0.3),
+class _BannerSliderState extends State<BannerSlider> {
+  int currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CarouselSlider.builder(
+          itemCount: bannerImages.length,
+          itemBuilder: (context, index, realIndex) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(16.r),
+              child: Image.network(
+                bannerImages[index],
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            );
+          },
+          options: CarouselOptions(
+            height: 170.h,
+            autoPlay: true,
+            viewportFraction: 1,
+            enlargeCenterPage: false,
+            onPageChanged: (index, reason) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+          ),
+        ),
+
+        SizedBox(height: 10.h),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            bannerImages.length,
+            (index) => AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              margin: EdgeInsets.symmetric(horizontal: 4.w),
+              width: currentIndex == index ? 18.w : 8.w,
+              height: 8.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                color: currentIndex == index
+                    ? Colors.deepOrange
+                    : Colors.grey.shade300,
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
