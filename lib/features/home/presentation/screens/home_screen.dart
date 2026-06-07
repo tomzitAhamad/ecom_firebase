@@ -5,6 +5,8 @@ import 'package:ecom_firebase/features/home/presentation/widgets/home_header.dar
 import 'package:ecom_firebase/features/home/presentation/widgets/product_grid.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/search_bar_widget.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/section_header.dart';
+import 'package:ecom_firebase/features/product/presentation/screens/product_details_screen.dart';
+import 'package:ecom_firebase/features/product/presentation/screens/product_listing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,16 +35,47 @@ class HomeScreen extends StatelessWidget {
 
                 SizedBox(height: 25.h),
 
-                SectionHeader(title: "Top Products", onTap: () {}),
+                SectionHeader(
+                  title: "Top Products",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            const ProductListingScreen(title: "Top Products"),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: 15.h),
 
-                ProductGrid(products: topProducts, onProductTap: () {}),
+                ProductGrid(
+                  products: topProducts,
+                  onProductTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ProductDetailsScreen(),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: 25.h),
 
-                SectionHeader(title: "Accessories", onTap: () {}),
-
+                SectionHeader(
+                  title: "Accessories",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            const ProductListingScreen(title: "Top Products"),
+                      ),
+                    );
+                  },
+                ),
                 SizedBox(height: 15.h),
 
                 ProductGrid(products: accessories, onProductTap: () {}),
