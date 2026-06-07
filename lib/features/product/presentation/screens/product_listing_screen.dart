@@ -31,7 +31,7 @@ class ProductListingScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const ProductDetailsScreen(),
+                    builder: (_) => ProductDetailsScreen(product: product),
                   ),
                 );
               },
@@ -51,9 +51,9 @@ class ProductListingScreen extends StatelessWidget {
                           top: Radius.circular(14.r),
                         ),
                         child: Image.network(
-                          product.image,
-                          width: double.infinity,
+                          product.images.first,
                           fit: BoxFit.cover,
+                          width: double.infinity,
                         ),
                       ),
                     ),

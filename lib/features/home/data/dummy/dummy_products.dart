@@ -1,41 +1,38 @@
-import 'package:ecom_firebase/features/home/data/models/product_model.dart';
+import '../models/product_model.dart';
 
-final topProducts = [
+final List<ProductModel> topProducts = [
   ProductModel(
-    name: "Tissot Watch",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-    price: 120,
+    name: "Leather Shoes",
+    price: 149.99,
+    description: "Premium leather shoes for daily use.",
+    images: [
+      "https://picsum.photos/500?1",
+      "https://picsum.photos/500?2",
+      "https://picsum.photos/500?3",
+    ],
   ),
 
   ProductModel(
-    name: "iPhone 7 Plus",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-    price: 249.99,
-  ),
-
-  ProductModel(
-    name: "Cleaner",
-    image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f",
-    price: 24,
+    name: "Apple Watch",
+    price: 199.99,
+    description: "Smart watch with premium features.",
+    images: [
+      "https://picsum.photos/500?4",
+      "https://picsum.photos/500?5",
+      "https://picsum.photos/500?6",
+    ],
   ),
 ];
 
-final accessories = [
+final List<ProductModel> accessories = [
   ProductModel(
-    name: "Speaker",
-    image: "https://images.unsplash.com/photo-1545454675-3531b543be5d",
-    price: 99,
-  ),
-
-  ProductModel(
-    name: "Sound System",
-    image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d",
-    price: 199,
-  ),
-
-  ProductModel(
-    name: "Gaming Remote",
-    image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3",
-    price: 89,
+    name: "Headphone",
+    price: 89.99,
+    description: "Noise cancelling headphone.",
+    images: [
+      "https://picsum.photos/500?7",
+      "https://picsum.photos/500?8",
+      "https://picsum.photos/500?9",
+    ],
   ),
 ];

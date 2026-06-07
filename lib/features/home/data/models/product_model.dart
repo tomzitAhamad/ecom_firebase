@@ -1,7 +1,13 @@
 class ProductModel {
   final String name;
-  final String image;
+  final List<String> images;
   final double price;
+  final String description;
 
-  ProductModel({required this.name, required this.image, required this.price});
+  const ProductModel({
+    required this.name,
+    required this.images,
+    required this.price,
+    required this.description,
+  });
 }

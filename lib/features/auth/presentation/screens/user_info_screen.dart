@@ -4,7 +4,6 @@ import 'package:ecom_firebase/features/auth/presentation/widgets/auth_button.dar
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_header.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_textfield.dart';
 
-import 'package:ecom_firebase/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

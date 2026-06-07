@@ -1,4 +1,5 @@
 import 'package:ecom_firebase/features/home/data/dummy/dummy_products.dart';
+import 'package:ecom_firebase/features/home/data/models/product_model.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/banner_slider.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/bottom_nav_bar.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/home_header.dart';
@@ -35,6 +36,7 @@ class HomeScreen extends StatelessWidget {
 
                 SizedBox(height: 25.h),
 
+                /// Top Products
                 SectionHeader(
                   title: "Top Products",
                   onTap: () {
@@ -52,11 +54,11 @@ class HomeScreen extends StatelessWidget {
 
                 ProductGrid(
                   products: topProducts,
-                  onProductTap: () {
+                  onProductTap: (ProductModel product) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const ProductDetailsScreen(),
+                        builder: (_) => ProductDetailsScreen(product: product),
                       ),
                     );
                   },
@@ -64,6 +66,7 @@ class HomeScreen extends StatelessWidget {
 
                 SizedBox(height: 25.h),
 
+                /// Accessories
                 SectionHeader(
                   title: "Accessories",
                   onTap: () {
@@ -71,14 +74,25 @@ class HomeScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) =>
-                            const ProductListingScreen(title: "Top Products"),
+                            const ProductListingScreen(title: "Accessories"),
                       ),
                     );
                   },
                 ),
+
                 SizedBox(height: 15.h),
 
-                ProductGrid(products: accessories, onProductTap: () {}),
+                ProductGrid(
+                  products: accessories,
+                  onProductTap: (ProductModel product) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ProductDetailsScreen(product: product),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
