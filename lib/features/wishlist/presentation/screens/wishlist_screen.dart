@@ -100,11 +100,20 @@ class WishlistScreen extends StatelessWidget {
                             SizedBox(height: 8.h),
 
                             Text(
-                              "\$${product.price}",
+                              "\$${(product.price * product.quantity).toStringAsFixed(2)}",
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.deepOrange,
+                              ),
+                            ),
+                            SizedBox(height: 4.h),
+
+                            Text(
+                              "Qty: ${product.quantity}",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                color: Colors.grey,
                               ),
                             ),
                           ],
