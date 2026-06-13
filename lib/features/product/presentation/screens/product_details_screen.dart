@@ -132,34 +132,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
 
               const Spacer(),
-
-              /// Add to Cart Button
-              SizedBox(
-                width: double.infinity,
-                height: 55.h,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const CartScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.deepOrange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                  ),
-                  child: Text(
-                    "ADD TO CART",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),

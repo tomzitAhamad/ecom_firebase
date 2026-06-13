@@ -1,10 +1,11 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:ecom_firebase/core/navigation/main_navigation_screen.dart';
 import 'package:ecom_firebase/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_button.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_footer.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_header.dart';
 import 'package:ecom_firebase/features/auth/presentation/widgets/auth_textfield.dart';
-import 'package:ecom_firebase/features/home/presentation/screens/home_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -100,7 +101,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (_) => HomeScreen()),
+                          MaterialPageRoute(
+                            builder: (_) => MainNavigationScreen(),
+                          ),
                         );
                       },
                     ),

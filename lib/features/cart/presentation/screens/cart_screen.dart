@@ -1,6 +1,6 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
-
+import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -73,7 +73,7 @@ class CartScreen extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.r),
                               child: Image.network(
-                                item.product.images[index],
+                                item.product.images.first,
                                 width: 80.w,
                                 height: 80.h,
                                 fit: BoxFit.cover,
@@ -187,7 +187,23 @@ class CartScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 55.h,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final wishlistProvider =
+                                Provider.of<WishlistProvider>(
+                                  context,
+                                  listen: false,
+                                );
+
+                            for (var item in cartProvider.cartItems) {
+                              wishlistProvider.addToWishlist(item.product);
+                            }
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Added to Wishlist"),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.deepOrange,
                             shape: RoundedRectangleBorder(
@@ -195,7 +211,7 @@ class CartScreen extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            "CHECKOUT",
+                            "ADD TO WISHLIST",
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,

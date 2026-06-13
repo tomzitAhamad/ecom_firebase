@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20.w),

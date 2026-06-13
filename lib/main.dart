@@ -1,5 +1,7 @@
+import 'package:ecom_firebase/core/providers/bottom_nav_provider.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/splash/presentation/screens/splash_screen.dart';
+import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +21,11 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MultiProvider(
-          providers: [ChangeNotifierProvider(create: (_) => CartProvider())],
+          providers: [
+            ChangeNotifierProvider(create: (_) => CartProvider()),
+            ChangeNotifierProvider(create: (_) => WishlistProvider()),
+            ChangeNotifierProvider(create: (_) => BottomNavProvider()),
+          ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             home: const SplashScreen(),
