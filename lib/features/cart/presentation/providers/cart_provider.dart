@@ -38,6 +38,11 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearCart() {
+    cartItems.clear();
+    notifyListeners();
+  }
+
   double get totalPrice {
     double total = 0;
 

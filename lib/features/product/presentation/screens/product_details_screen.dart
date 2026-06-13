@@ -57,12 +57,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           onPressed: isAdded
                               ? null
                               : () {
-                                  wishlistProvider.addToWishlist(product);
+                                  final cartProvider = context
+                                      .read<CartProvider>();
 
-                                  context.read<CartProvider>().addToCart(
-                                    product,
-                                  );
+                                  // Add only to cart
+                                  cartProvider.addToCart(product);
 
+                                  // Go to cart screen
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -73,12 +74,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        "${product.name} added to wishlist",
+                                        "${product.name} added to cart",
                                       ),
                                     ),
                                   );
                                 },
-
                           icon: Icon(
                             isAdded ? Icons.favorite : Icons.favorite_border,
                             color: Colors.white,

@@ -203,6 +203,9 @@ class CartScreen extends StatelessWidget {
                               wishlistProvider.addToWishlist(item.product);
                             }
 
+                            // Clear cart after adding to wishlist
+                            cartProvider.clearCart();
+
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text("Added to Wishlist"),
