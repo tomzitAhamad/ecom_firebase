@@ -1,4 +1,5 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:ecom_firebase/core/providers/bottom_nav_provider.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  final bool fromBottomNav;
+  const CartScreen({super.key, this.fromBottomNav = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,13 @@ class CartScreen extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: AppColors.deepOrange,
             child: IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                if (fromBottomNav) {
+                  context.read<BottomNavProvider>().changeIndex(0);
+                } else {
+                  Navigator.pop(context);
+                }
+              },
               icon: const Icon(Icons.arrow_back, color: Colors.white),
             ),
           ),

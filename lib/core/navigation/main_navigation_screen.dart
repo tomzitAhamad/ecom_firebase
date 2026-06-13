@@ -17,7 +17,7 @@ class MainNavigationScreen extends StatelessWidget {
     final screens = [
       const HomeScreen(),
       const WishlistScreen(),
-      const CartScreen(),
+      const CartScreen(fromBottomNav: true),
       // const ProfileScreen(),
     ];
 
