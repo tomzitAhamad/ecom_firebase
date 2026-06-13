@@ -27,22 +27,20 @@ class CartScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        leading: Padding(
-          padding: EdgeInsets.only(left: 12.w),
-          child: CircleAvatar(
-            backgroundColor: AppColors.deepOrange,
-            child: IconButton(
-              onPressed: () {
-                if (fromBottomNav) {
-                  context.read<BottomNavProvider>().changeIndex(0);
-                } else {
-                  Navigator.pop(context);
-                }
-              },
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-            ),
-          ),
-        ),
+        leading: fromBottomNav
+            ? null
+            : Padding(
+                padding: EdgeInsets.only(left: 12.w),
+                child: CircleAvatar(
+                  backgroundColor: AppColors.deepOrange,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  ),
+                ),
+              ),
       ),
 
       body: Consumer<CartProvider>(
