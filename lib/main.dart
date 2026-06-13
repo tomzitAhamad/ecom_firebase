@@ -1,6 +1,8 @@
+import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +18,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
+        return MultiProvider(
+          providers: [ChangeNotifierProvider(create: (_) => CartProvider())],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: const SplashScreen(),
+          ),
         );
       },
     );

@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_firebase/core/constants/app_colors.dart';
+import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/cart/presentation/screens/cart_screen.dart';
 import 'package:ecom_firebase/features/home/data/models/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final ProductModel product;
@@ -46,7 +48,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   CircleAvatar(
                     backgroundColor: AppColors.deepOrange,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CartProvider>().addToCart(product);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const CartScreen()),
+                        );
+                      },
                       icon: const Icon(
                         Icons.favorite_border,
                         color: Colors.white,
