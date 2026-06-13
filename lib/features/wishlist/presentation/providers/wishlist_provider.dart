@@ -19,4 +19,8 @@ class WishlistProvider extends ChangeNotifier {
     _wishlistItems.remove(product);
     notifyListeners();
   }
+
+  bool isInWishlist(ProductModel product) {
+    return wishlistItems.any((item) => item.name == product.name);
+  }
 }

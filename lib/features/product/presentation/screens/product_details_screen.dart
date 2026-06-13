@@ -3,7 +3,7 @@ import 'package:ecom_firebase/core/constants/app_colors.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/cart/presentation/screens/cart_screen.dart';
 import 'package:ecom_firebase/features/home/data/models/product_model.dart';
-
+import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +37,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  /// Back Button
                   CircleAvatar(
                     backgroundColor: AppColors.deepOrange,
                     child: IconButton(
@@ -45,22 +46,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                   ),
 
-                  CircleAvatar(
-                    backgroundColor: AppColors.deepOrange,
-                    child: IconButton(
-                      onPressed: () {
-                        context.read<CartProvider>().addToCart(product);
+                  /// Wishlist Button
+                  Consumer<WishlistProvider>(
+                    builder: (context, wishlistProvider, child) {
+                      final isAdded = wishlistProvider.isInWishlist(product);
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => const CartScreen()),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
-                      ),
-                    ),
+                      return CircleAvatar(
+                        backgroundColor: AppColors.deepOrange,
+                        child: IconButton(
+                          onPressed: isAdded
+                              ? null
+                              : () {
+                                  wishlistProvider.addToWishlist(product);
+
+                                  context.read<CartProvider>().addToCart(
+                                    product,
+                                  );
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const CartScreen(),
+                                    ),
+                                  );
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "${product.name} added to wishlist",
+                                      ),
+                                    ),
+                                  );
+                                },
+
+                          icon: Icon(
+                            isAdded ? Icons.favorite : Icons.favorite_border,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

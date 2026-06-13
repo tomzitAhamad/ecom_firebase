@@ -1,5 +1,4 @@
 import 'package:ecom_firebase/core/constants/app_colors.dart';
-import 'package:ecom_firebase/core/providers/bottom_nav_provider.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
