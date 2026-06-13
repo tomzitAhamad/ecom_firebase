@@ -1,7 +1,6 @@
 import 'package:ecom_firebase/features/home/data/dummy/dummy_products.dart';
 import 'package:ecom_firebase/features/home/data/models/product_model.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/banner_slider.dart';
-import 'package:ecom_firebase/features/home/presentation/widgets/bottom_nav_bar.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/home_header.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/product_grid.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/search_bar_widget.dart';
