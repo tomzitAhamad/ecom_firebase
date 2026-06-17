@@ -1,6 +1,7 @@
 import 'package:ecom_firebase/features/home/data/dummy/dummy_products.dart';
 import 'package:ecom_firebase/features/home/data/models/product_model.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/banner_slider.dart';
+import 'package:ecom_firebase/features/home/presentation/widgets/bottom_nav_bar.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/home_header.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/product_grid.dart';
 import 'package:ecom_firebase/features/home/presentation/widgets/search_bar_widget.dart';
@@ -9,12 +10,15 @@ import 'package:ecom_firebase/features/product/presentation/screens/product_deta
 import 'package:ecom_firebase/features/product/presentation/screens/product_listing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ecom_firebase/features/home/data/dummy/all_products.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final topProducts = allProducts.take(5).toList();
+    final accessories = allProducts.skip(5).take(5).toList();
     return Scaffold(
       body: SafeArea(
         child: Padding(

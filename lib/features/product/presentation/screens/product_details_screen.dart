@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_firebase/core/constants/app_colors.dart';
 import 'package:ecom_firebase/features/cart/presentation/providers/cart_provider.dart';
-import 'package:ecom_firebase/features/cart/presentation/screens/cart_screen.dart';
 import 'package:ecom_firebase/features/cart/presentation/screens/selected_product_cart_screen.dart';
 import 'package:ecom_firebase/features/home/data/models/product_model.dart';
 import 'package:ecom_firebase/features/wishlist/presentation/providers/wishlist_provider.dart';
